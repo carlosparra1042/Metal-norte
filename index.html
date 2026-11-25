@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aceros & Metales del Norte | Suministros Industriales</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado y Navegación (RF01, RF06) -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="#inicio" class="logo">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <div class="logo-text">
+                    <span class="brand-name">METAL<span class="highlight">NORTE</span></span>
+                    <span class="brand-sub">Aceros, Aluminio y Troquelados</span>
+                </div>
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#empresa" class="nav-link">Empresa</a></li>
+                    <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+                    <li><a href="#carrito-seccion" class="nav-link">Carrito</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <button id="btn-abrir-carrito" class="cart-btn" aria-label="Ver carrito de compras">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span>Carrito</span>
+                <span id="contador-carrito" class="badge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Banner Principal / Hero (RF01) -->
+        <section id="inicio" class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <span class="hero-tag">SUMINISTROS METALMECÁNICOS Y DE CONSTRUCCIÓN</span>
+                <h1>Soluciones en Acero, Aluminio y Láminas Troqueladas</h1>
+                <p>Abastecemos proyectos industriales, estructurales y arquitectónicos en toda Colombia con materiales certificados, corte a medida y despacho inmediato.</p>
+                <div class="hero-actions">
+                    <a href="#catalogo" class="btn btn-primary">Explorar Catálogo</a>
+                    <a href="#carrito-seccion" class="btn btn-outline">Ir a Mi Pedido</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carrusel Nuestra Empresa -->
+        <section id="empresa" class="section container">
+            <div class="section-header">
+                <h2>Conoce Nuestra Empresa</h2>
+                <p>Instalaciones, maquinaria y bodegas desde donde despachamos tus materiales.</p>
+            </div>
+            <div class="carousel" id="carrusel-empresa" aria-roledescription="carrusel">
+                <div class="carousel-track">
+                    <figure class="carousel-slide"><img src="img/Empresa1.jpg" alt="Planta con maquinaria de perfilado y puente grúa"></figure>
+                    <figure class="carousel-slide"><img src="img/Empresa2.jpg" alt="Montacargas y tubería almacenada en bodega"></figure>
+                    <figure class="carousel-slide"><img src="img/Empresa3.jpg" alt="Perfiles metálicos apilados en la bodega"></figure>
+                    <figure class="carousel-slide"><img src="img/Empresa4.jpg" alt="Láminas onduladas metálicas apiladas"></figure>
+                </div>
+                <button type="button" class="carousel-btn prev" aria-label="Imagen anterior">&#10094;</button>
+                <button type="button" class="carousel-btn next" aria-label="Imagen siguiente">&#10095;</button>
+                <div class="carousel-dots"></div>
+            </div>
+        </section>
+
+        <!-- Catálogo de Productos (RF02) -->
+        <section id="catalogo" class="section container">
+            <div class="section-header">
+                <h2>Catálogo de Productos Metálicos</h2>
+                <p>Selecciona los materiales que necesitas para tu obra o taller. Precios en Pesos Colombianos (COP) IVA incluido.</p>
+                
+                <!-- Filtros por categoría -->
+                <div class="filtros" id="filtros-categoria">
+                    <button class="filtro-btn active" data-categoria="todos">Todos (12)</button>
+                    <button class="filtro-btn" data-categoria="varillas">Varillas y Barras</button>
+                    <button class="filtro-btn" data-categoria="laminas">Láminas y Troquelados</button>
+                    <button class="filtro-btn" data-categoria="aluminio">Aluminio y Perfiles</button>
+                </div>
+            </div>
+
+            <!-- Contenedor dinámico generado desde JS -->
+            <div id="grid-productos" class="products-grid"></div>
+        </section>
+
+        <!-- Sección Carrito de Compras y Finalización (RF03, RF04, RF05) -->
+        <section id="carrito-seccion" class="section cart-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Carrito de Compras y Cotización</h2>
+                    <p>Gestiona las cantidades de tus materiales y completa tus datos para procesar el despacho.</p>
+                </div>
+
+                <div class="checkout-layout">
+                    <!-- Tabla de Productos en Carrito -->
+                    <div class="cart-box">
+                        <div class="cart-box-header">
+                            <h3>Materiales Seleccionados (<span id="total-unidades">0</span> unidades)</h3>
+                            <button id="btn-vaciar-carrito" class="btn btn-danger-outline" type="button">Vaciar Carrito</button>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="cart-table">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Precio Unit.</th>
+                                        <th>Cantidad</th>
+                                        <th>Subtotal</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-carrito-body">
+                                    <!-- Filas renderizadas con JS -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="carrito-vacio-msg" class="empty-cart">
+                            <p>Tu carrito de materiales está vacío actualmente.</p>
+                            <a href="#catalogo" class="btn btn-primary">Ver Catálogo de Metales</a>
+                        </div>
+                    </div>
+
+                    <!-- Resumen de Totales y Formulario de Compra (RF04, RF05) -->
+                    <aside class="summary-box">
+                        <h3>Resumen de Compra</h3>
+                        
+                        <div class="shipping-selector">
+                            <label for="tipo-envio">Modalidad de Entrega:</label>
+                            <select id="tipo-envio">
+                                <option value="35000">Envío Estándar Nacional ($35.000 COP)</option>
+                                <option value="65000">Transporte Carga Pesada / Grúa ($65.000 COP)</option>
+                                <option value="0">Recogida en Bodega Principal ($0 COP)</option>
+                            </select>
+                        </div>
+
+                        <div class="totals-list">
+                            <div class="total-row">
+                                <span>Subtotal Productos:</span>
+                                <span id="subtotal-general">$0 COP</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Costo de Envío:</span>
+                                <span id="costo-envio">$0 COP</span>
+                            </div>
+                            <div class="total-row grand-total">
+                                <span>Total a Pagar:</span>
+                                <span id="total-pagar">$0 COP</span>
+                            </div>
+                        </div>
+
+                        <hr class="divider">
+
+                        <form id="form-checkout" class="checkout-form" novalidate>
+                            <h4>Datos del Comprador</h4>
+                            <div class="form-group">
+                                <label for="nombre">Nombre completo o Empresa *</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Ej. Carlos Mendoza / Construcciones SAS" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="correo">Correo electrónico *</label>
+                                <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono / WhatsApp *</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="Ej. 300 123 4567" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="direccion">Dirección de entrega *</label>
+                                <input type="text" id="direccion" name="direccion" placeholder="Calle, carrera, bodega o ciudad" required>
+                            </div>
+                            <button type="submit" id="btn-finalizar" class="btn btn-primary btn-block">Finalizar Compra</button>
+                        </form>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Notificación Flotante (Toast) -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- Modal de Confirmación de Compra (RF05) -->
+    <div id="modal-confirmacion" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-icon">✓</div>
+            <h3>¡Pedido Procesado con Éxito!</h3>
+            <div id="detalle-confirmacion" class="modal-body"></div>
+            <button id="btn-cerrar-modal" class="btn btn-primary btn-block">Aceptar y Continuar</button>
+        </div>
+    </div>
+
+    <!-- Pie de Página (RF01) -->
+    <footer id="contacto" class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>METALNORTE S.A.S.</h4>
+                <p>Distribuidora especializada en productos siderúrgicos, varillas corrugadas, perfilería en aluminio y láminas troqueladas para la industria colombiana.</p>
+            </div>
+            <div>
+                <h4>Contacto Comercial</h4>
+                <p>📍 Zona Industrial Vía 40, Bodega 14, Barranquilla</p>
+                <p>📞 PBX: (605) 385-4920 | Cel: +57 310 456 7890</p>
+                <p>✉️ ventas@metalnorte.com.co</p>
+            </div>
+            <div>
+                <h4>Horario de Despachos</h4>
+                <p>Lunes a Viernes: 7:30 AM – 5:30 PM</p>
+                <p>Sábados: 8:00 AM – 1:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MetalNorte Suministros Industriales. Proyecto Académico Programación Web.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
